@@ -33,3 +33,10 @@ type Payment struct {
 	ID int
 	Amount Money
 }
+
+// PaymentSource presents source of payments.
+type PaymentSource struct {
+	Type string
+	Number string
+	Balance Money
+}

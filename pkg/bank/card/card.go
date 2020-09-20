@@ -90,4 +90,18 @@ func Total(cards []types.Card) types.Money {
 	return total
 }
 
-
+// PaymentSources returns payments sources.
+func PaymentSources(cards []types.Card) []types.PaymentSource {
+	var result []types.PaymentSource
+	for _, card := range cards {
+		if card.Balance > 0 && card.Active {
+			paymentSource := types.PaymentSource{
+				Type:    "card",
+				Number:  string(card.PAN),
+				Balance: card.Balance,
+			}
+			result = append(result, paymentSource)
+		}
+	}
+	return result
+} 
